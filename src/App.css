@@ -1,0 +1,70 @@
+/* --- Globals --- */
+:root {
+    --color-green: 34, 139, 34;
+    --color-blue: 100, 149, 237;
+    --color-red: 205, 92, 92;
+}
+
+/* --- Reusable selectors --- */
+.outer-container {
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+}
+
+.inner-container {
+    max-width: 1000px;
+}
+
+.green-card {
+    border: 1px solid rgb(var(--color-green));
+    background: rgba(var(--color-green), .2);
+}
+
+.green-card p,
+.green-card span {
+    color: rgb(var(--color-green));
+}
+
+.blue-card {
+    border: 1px solid rgb(var(--color-blue));
+    background: rgba(var(--color-blue), .2);
+}
+
+.blue-card p,
+.blue-card span {
+    color: rgb(var(--color-blue));
+}
+
+.red-card {
+    border: 1px solid rgb(var(--color-red));
+    background: rgba(var(--color-red), .2);
+}
+
+.red-card p,
+.red-card span {
+    color: rgb(var(--color-red));
+}
+
+/* --- Section selectors --- */
+/* ----- Sales overview ----- */
+.sales-overview-cards {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+}
+
+.sales-overview-card {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    flex-basis: 300px;
+    border-radius: 5px;
+    gap: 1em;
+    font-size: 1.5em;
+    text-align: center;
+    padding: 2em;
+}
+
+/* ----- Another section ----- */
