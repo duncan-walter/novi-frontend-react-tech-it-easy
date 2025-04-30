@@ -3,17 +3,26 @@
     --color-green: 34, 139, 34;
     --color-blue: 100, 149, 237;
     --color-red: 205, 92, 92;
+    --color-grey: 50, 50, 50;
+}
+
+img {
+    width: 100%;
+}
+
+h2 {
+    margin: 1em 0;
 }
 
 /* --- Reusable selectors --- */
 .outer-container {
     display: flex;
     justify-content: center;
-    padding: 1em;
+    padding: 0 1em;
 }
 
 .inner-container {
-    max-width: 1000px;
+    width: 1200px;
 }
 
 .green-card {
@@ -67,4 +76,53 @@
     padding: 2em;
 }
 
-/* ----- Another section ----- */
+/* ----- Best selling ----- */
+.best-selling-television-card {
+    display: flex;
+    background-color: rgba(var(--color-grey), .1);
+    border: 2px dashed rgb(var(--color-grey));
+    border-radius: 5px;
+    padding: 3em;
+    gap: 2em;
+}
+
+/* ----- Television styling ----- */
+.television-information {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.television-image-wrapper {
+    flex-basis: 350px;
+    flex-grow: 0;
+    flex-shrink: 1;
+}
+
+.television-name {
+    font-size: 1.5em;
+}
+
+.television-price {
+    font-size: 2em;
+}
+
+.television-available-sizes {
+    font-size: 1.25em;
+}
+
+.television-features {
+    display: flex;
+    gap: .5em;
+}
+
+.television-features img {
+    width: 14px;
+    height: 14px;
+}
+
+.television-features span {
+    display: flex;
+    align-items: center;
+    gap: .2em;
+}
