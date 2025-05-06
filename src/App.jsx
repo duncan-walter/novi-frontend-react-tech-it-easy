@@ -8,8 +8,10 @@ import formatTelevisionPrice from "./helpers/format-television-price.js";
 import formatTelevisionAvailableSizes from "./helpers/format-television-available-sizes.js";
 import checkImage from "./assets/check.png";
 import minusImage from "./assets/minus.png";
+import showOutcomeInConsole from "./constants/oefenbestand.js";
 
 function App() {
+    showOutcomeInConsole();
     const totalTelevisionsSold = calculateTotalTelevisionsSold();
     const totalTelevisionsBought = calculateTotalTelevisionsBought();
     const totalTelevisionsRemaining = calculateTotalTelevisionsRemaining();
