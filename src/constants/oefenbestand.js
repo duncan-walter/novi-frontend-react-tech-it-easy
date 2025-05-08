@@ -11,7 +11,7 @@ export default function showOutcomeInConsole() {
     // Deel 2 opdracht 1b
     const soldOutTelevisions = inventory.filter(television => television.originalStock === television.sold);
     console.log('Sold out television(s):');
-    console.log(soldOutTelevisions);
+    console.table(soldOutTelevisions);
 
     // Deel 2 opdracht 1c
     const specificTelevision = inventory.find(television => television.type === "NH3216SMART");
@@ -26,7 +26,7 @@ export default function showOutcomeInConsole() {
         }
     });
     console.log("Information about sports lover compatible televisions:")
-    console.log(sportsLoverCompatibleTelevisions);
+    console.table(sportsLoverCompatibleTelevisions);
 
     // Deel 2 opdracht 1e
     const largeTelevisions = inventory.filter(television => {
@@ -41,7 +41,7 @@ export default function showOutcomeInConsole() {
         }
     });
     console.log("Televisions that are available in size 65 inch or larger:")
-    console.log(largeTelevisions);
+    console.table(largeTelevisions);
 
     // Deel 2 opdracht 1f
     //Opdracht 1f (uitdaging): Gebruik array-methoden om alle informatie te verzamelen van de tv's die over ambilight beschikken. Log de uitkomst in de console.
@@ -50,5 +50,5 @@ export default function showOutcomeInConsole() {
         return television.options.find(option => option.name === "ambiLight").applicable === true
     });
     console.log("Television that have ambilight:");
-    console.log(ambilightTelevisions);
+    console.table(ambilightTelevisions);
 }

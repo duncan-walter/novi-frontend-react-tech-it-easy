@@ -17,8 +17,32 @@ function App() {
     const totalTelevisionsRemaining = calculateTotalTelevisionsRemaining();
     const bestSellingTelevision = bestSellingTv;
 
-    function consoleLogButtonText(event) {
-        console.log(event.target.textContent);
+    function sortTelevisionsByMostSoldDescending() {
+        inventory.sort((left, right) => {
+           return right.sold - left.sold;
+        });
+
+        console.log("Televisions sorted by most sold (descending):");
+        // WOW, console.table kijkt echt een stuk fijner!!!
+        console.table(inventory);
+    }
+
+    function sortTelevisionsByPriceAscending() {
+        inventory.sort((left, right) => {
+            return left.price - right.price;
+        });
+
+        console.log("Televisions sorted by price (ascending):");
+        console.table(inventory);
+    }
+
+    function sortTelevisionsByRefreshRateDescending() {
+        inventory.sort((left, right) => {
+            return right.refreshRate - left.refreshRate;
+        });
+
+        console.log("Televisions sorted by refresh rate (descending):");
+        console.table(inventory);
     }
 
     return (<>
@@ -73,9 +97,9 @@ function App() {
                 <section className="all-televisions">
                     <h2>Alle TV&apos;s</h2>
                     <div>
-                        <button onClick={consoleLogButtonText}>Meest verkocht eerst</button>
-                        <button onClick={consoleLogButtonText}>Goedkoopste eerst</button>
-                        <button onClick={consoleLogButtonText}>Meest geschikt voor sport eerst</button>
+                        <button onClick={sortTelevisionsByMostSoldDescending}>Meest verkocht eerst</button>
+                        <button onClick={sortTelevisionsByPriceAscending}>Goedkoopste eerst</button>
+                        <button onClick={sortTelevisionsByRefreshRateDescending}>Meest geschikt voor sport eerst</button>
                         <ul className="television-brands">
                             {inventory.map((television) => {
                                 return <li key={television.id}>{television.brand}</li>
@@ -105,7 +129,7 @@ function App() {
                                                     // Maar dat was veel dubbele code. Dus heb ik een ternary operator
                                                     // in het src attribuut van het image element gebruikt.
                                                     //
-                                                    // Volgens mij mag ik de option.name property als als key gebruiken.
+                                                    // Volgens mij mag ik de option.name property als key gebruiken.
                                                     // Omdat deze uniek binnen deze "loop" zal moeten zijn.
                                                     <span key={option.name}>
                                                         <img src={option.applicable ? checkImage : minusImage} alt="Check"/>
