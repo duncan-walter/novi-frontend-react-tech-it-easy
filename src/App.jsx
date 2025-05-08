@@ -1,5 +1,5 @@
 import './App.css';
-import {bestSellingTv} from "./constants/inventory.js";
+import {bestSellingTv, inventory} from "./constants/inventory.js";
 import calculateTotalTelevisionsSold from "./helpers/calculate-total-televisions-sold.js";
 import calculateTotalTelevisionsBought from "./helpers/calculate-total-televisions-bought.js";
 import calculateTotalTelevisionsRemaining from "./helpers/calculate-total-televisions-remaining.js";
@@ -76,6 +76,48 @@ function App() {
                         <button onClick={consoleLogButtonText}>Meest verkocht eerst</button>
                         <button onClick={consoleLogButtonText}>Goedkoopste eerst</button>
                         <button onClick={consoleLogButtonText}>Meest geschikt voor sport eerst</button>
+                        <ul className="television-brands">
+                            {inventory.map((television) => {
+                                return <li key={television.id}>{television.brand}</li>
+                            })}
+                        </ul>
+                    </div>
+                    <div>
+                        {inventory.map((television) => {
+                            // Ik kreeg de formatting van mijn return niet fijn.
+                            // Maar ik kwam er achter dat je de hele return kan wrappen met haakjes.
+                            // Aleen weet ik niet of dit per conventie is?
+                            return (
+                                <div key={television.id} className="television-card">
+                                    <span className="television-image-wrapper">
+                                        <img src={television.sourceImg} alt="Television"/>
+                                    </span>
+                                    <div className="television-information">
+                                        <p className="television-name">{formatTelevisionName(television)}</p>
+                                        <p className="television-price">{formatTelevisionPrice(television)}</p>
+                                        <p className="television-available-sizes">{formatTelevisionAvailableSizes(television)}</p>
+                                        <div className="television-features">
+                                            {television.options.map((option) => {
+                                                return (
+                                                    // Hier stond eerst een if-else statement die checkte of
+                                                    // de option.applicable true of false was. Op basis van die property
+                                                    // werd er een span element met de juiste afbeelding getoond.
+                                                    // Maar dat was veel dubbele code. Dus heb ik een ternary operator
+                                                    // in het src attribuut van het image element gebruikt.
+                                                    //
+                                                    // Volgens mij mag ik de option.name property als als key gebruiken.
+                                                    // Omdat deze uniek binnen deze "loop" zal moeten zijn.
+                                                    <span key={option.name}>
+                                                        <img src={option.applicable ? checkImage : minusImage} alt="Check"/>
+                                                        {option.name}
+                                                    </span>
+                                                )
+                                            })}
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        })}
                     </div>
                 </section>
             </div>
