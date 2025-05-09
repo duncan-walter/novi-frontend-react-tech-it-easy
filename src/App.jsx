@@ -8,6 +8,7 @@ import formatTelevisionPrice from "./helpers/format-television-price.js";
 import formatTelevisionAvailableSizes from "./helpers/format-television-available-sizes.js";
 import checkImage from "./assets/check.png";
 import minusImage from "./assets/minus.png";
+import outOfStock from "./assets/out-of-stock.png";
 import showOutcomeInConsole from "./constants/oefenbestand.js";
 
 function App() {
@@ -43,6 +44,23 @@ function App() {
 
         console.log("Televisions sorted by refresh rate (descending):");
         console.table(inventory);
+    }
+
+    function sortTelevisionsByScreenSizeDescending() {
+        inventory.sort((left, right) => {
+            // De spread operator (...) is blijkbaar nodig omdat de Math.max() methode niet met array's kan werken. Vreemd...
+            const leftMaximumSize = Math.max(...left.availableSizes);
+            const rightMaximumSize = Math.max(...right.availableSizes);
+
+            return rightMaximumSize - leftMaximumSize;
+        });
+
+        console.log("Televisions sorted by screen size (descending):");
+        console.table(inventory);
+    }
+
+    function calculateTelevisionRemainingStock(television) {
+        return television.originalStock - television.sold;
     }
 
     return (<>
@@ -100,6 +118,7 @@ function App() {
                         <button onClick={sortTelevisionsByMostSoldDescending}>Meest verkocht eerst</button>
                         <button onClick={sortTelevisionsByPriceAscending}>Goedkoopste eerst</button>
                         <button onClick={sortTelevisionsByRefreshRateDescending}>Meest geschikt voor sport eerst</button>
+                        <button onClick={sortTelevisionsByScreenSizeDescending}>Grootste schermgroottes eerst</button>
                         <ul className="television-brands">
                             {inventory.map((television) => {
                                 return <li key={television.id}>{television.brand}</li>
@@ -115,6 +134,10 @@ function App() {
                                 <div key={television.id} className="television-card">
                                     <span className="television-image-wrapper">
                                         <img src={television.sourceImg} alt="Television"/>
+                                        {calculateTelevisionRemainingStock(television) < 1 &&
+                                            <img src={outOfStock}
+                                                 className="television-out-of-stock"
+                                                 alt="Television"/>}
                                     </span>
                                     <div className="television-information">
                                         <p className="television-name">{formatTelevisionName(television)}</p>
@@ -131,6 +154,10 @@ function App() {
                                                     //
                                                     // Volgens mij mag ik de option.name property als key gebruiken.
                                                     // Omdat deze uniek binnen deze "loop" zal moeten zijn.
+                                                    //
+                                                    // Waarom krijg ik de volgende waarschuwing in mijn IDE?
+                                                    // Type {} is not assignable to type string | undefined
+                                                    // Is dit wel de juiste manier?
                                                     <span key={option.name}>
                                                         <img src={option.applicable ? checkImage : minusImage} alt="Check"/>
                                                         {option.name}
