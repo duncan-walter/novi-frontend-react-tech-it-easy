@@ -1,8 +1,8 @@
 export default function sortTelevisionsByPriceAscending(televisions) {
-    televisions.sort((left, right) => {
+    const sortedTelevisions = [...televisions].sort((left, right) => {
         return left.price - right.price;
     });
 
     console.log("Televisions sorted by price (ascending):");
-    console.table(televisions);
+    console.table(sortedTelevisions);
 }
