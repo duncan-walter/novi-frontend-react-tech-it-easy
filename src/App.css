@@ -1,0 +1,149 @@
+/* --- Globals --- */
+:root {
+    --color-green: 34, 139, 34;
+    --color-blue: 100, 149, 237;
+    --color-red: 205, 92, 92;
+    --color-grey: 50, 50, 50;
+}
+
+img {
+    width: 100%;
+}
+
+h2 {
+    margin: 1em 0;
+}
+
+/* --- Reusable selectors --- */
+.outer-container {
+    display: flex;
+    justify-content: center;
+    padding: 0 1em;
+}
+
+.inner-container {
+    width: 1200px;
+}
+
+.green-card {
+    border: 1px solid rgb(var(--color-green));
+    background: rgba(var(--color-green), .2);
+}
+
+.green-card p,
+.green-card span {
+    color: rgb(var(--color-green));
+}
+
+.blue-card {
+    border: 1px solid rgb(var(--color-blue));
+    background: rgba(var(--color-blue), .2);
+}
+
+.blue-card p,
+.blue-card span {
+    color: rgb(var(--color-blue));
+}
+
+.red-card {
+    border: 1px solid rgb(var(--color-red));
+    background: rgba(var(--color-red), .2);
+}
+
+.red-card p,
+.red-card span {
+    color: rgb(var(--color-red));
+}
+
+/* --- Section selectors --- */
+/* ----- Sales overview ----- */
+.sales-overview-cards {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+}
+
+.sales-overview-card {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    flex-basis: 300px;
+    border-radius: 5px;
+    gap: 1em;
+    font-size: 1.5em;
+    text-align: center;
+    padding: 2em;
+}
+
+/* ----- Best selling ----- */
+.best-selling-television-card {
+    display: flex;
+    background-color: rgba(var(--color-grey), .1);
+    border: 2px dashed rgb(var(--color-grey));
+    border-radius: 5px;
+    padding: 3em;
+    gap: 2em;
+}
+
+/* ----- Television styling ----- */
+.television-card {
+    display: flex;
+    padding: 3em;
+    gap: 2em;
+}
+
+.television-information {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.television-image-wrapper {
+    position: relative;
+    flex-basis: 350px;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.television-name {
+    font-size: 1.5em;
+}
+
+.television-price {
+    font-size: 2em;
+}
+
+.television-available-sizes {
+    font-size: 1.25em;
+}
+
+.television-features {
+    display: flex;
+    gap: .5em;
+}
+
+.television-features img {
+    width: 14px;
+    height: 14px;
+}
+
+.television-features span {
+    display: flex;
+    align-items: center;
+    gap: .2em;
+}
+
+/* ----- All televisions ----- */
+.television-brands {
+    display: flex;
+    gap: 1em;
+    list-style: none;
+}
+
+.television-out-of-stock {
+    position: absolute;
+    left: 0;
+    top: -100px;
+    rotate: -45deg;
+}
